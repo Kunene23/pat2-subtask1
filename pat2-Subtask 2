@@ -1,11 +1,12 @@
-#include <iostream>
-#include <string>
-#include <cctype>
-#include <map>
+#include <iostream> // for input and output
+#include <string> // for string data type
+#include <cctype> // for conversion of letters to uppercase
+#include <map> // for creating a dictionary that links letter to morse codes
 
 using namespace std;
 
 int main() {
+   // Morse Code dictionary
     map<char, string> morse = {
         {'A', ".-"}, {'B', "-..."}, {'C', "-.-."}, {'D', "-.."}, {'E', "."},
         {'F', "..-."}, {'G', "--."}, {'H', "...."}, {'I', ".."}, {'J', ".---"},
@@ -16,16 +17,19 @@ int main() {
 
     string input;
     cout << "Enter a message in English (A-Z characters only): ";
-    getline(cin, input);
+    getline(cin, input); //Reads the message
 
     string fullMorse = "";
-    for (char ch : input) {
-        char upper = toupper(ch);
-        if (morse.count(upper)) {
-            string code = morse[upper];
-            cout << upper << ": " << code << endl;
-            if (!fullMorse.empty()) fullMorse += "   "; // three spaces
-            fullMorse += code;
+
+    for (char ch : input) // for each character input in the stream
+{
+        char upper = toupper(ch); //Converts letters to uppercase
+        if (morse.count(upper)) //Checks if letter exists in the dictionary
+{
+            string code = morse[upper]; //Fetching the morse code
+            cout << upper << ": " << code << endl; //Outputting each letter
+            if (!fullMorse.empty()) fullMorse += "   "; //Adding the three spaces
+            fullMorse += code; //Adding the morse code
         }
     }
 
